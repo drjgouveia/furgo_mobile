@@ -175,39 +175,61 @@ class _InfoInputPageState extends State<InfoInputPage> {
                                   'http://furgo.drjgouveia.dev/';
                                   dio.options.connectTimeout = 5000;
                                   dio.options.receiveTimeout = 3000;
-                                  var response = await dio.post(
-                                    'api/',
-                                    data: FormData.fromMap({
-                                      'plate': plate,
-                                      'kms': kms,
-                                      "comb": comb
-                                    }),
-                                  );
+                                  try {
+                                    var response = await dio.post(
+                                      'api/',
+                                      data: FormData.fromMap({
+                                        'plate': plate,
+                                        'kms': kms,
+                                        "comb": comb
+                                      }),
+                                    );
 
-                                  if (response.statusCode == 200) {
+                                    if (response.statusCode == 200) {
+                                      await Alert(
+                                          context: context,
+                                          title: "Alerta",
+                                          desc: "Datos enviados con éxito!",
+                                          buttons: [
+                                            DialogButton(
+                                              child: const Text(
+                                                "Ok",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              ),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              width: 120,
+                                            )
+                                          ]
+                                      ).show();
+                                    } else {
+                                      await Alert(
+                                          context: context,
+                                          title: "Alerta",
+                                          desc: "Datos enviados sin éxito!",
+                                          buttons: [
+                                            DialogButton(
+                                              color: const Color(0xff5472d3),
+                                              child: const Text(
+                                                "Ok",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              ),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              width: 120,
+                                            )
+                                          ]
+                                      ).show();
+                                    }
+                                  } catch(e) {
                                     await Alert(
                                         context: context,
                                         title: "Alerta",
-                                        desc: "Datos enviados con éxito!",
-                                        buttons: [
-                                          DialogButton(
-                                            child: const Text(
-                                              "Ok",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20),
-                                            ),
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            width: 120,
-                                          )
-                                        ]
-                                    ).show();
-                                  } else {
-                                    await Alert(
-                                        context: context,
-                                        title: "Alerta",
-                                        desc: "Datos enviados sin éxito!",
+                                        desc: "Datos enviados sin éxito! Comprobar la conexión a internet.",
                                         buttons: [
                                           DialogButton(
                                             color: const Color(0xff5472d3),
