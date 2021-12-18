@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="furgo.drjgouveia.furgo">
    <application
-        android:label="furgo"
+        android:label="FurGo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

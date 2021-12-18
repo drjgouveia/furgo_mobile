@@ -184,9 +184,6 @@ class _InfoInputPageState extends State<InfoInputPage> {
                                     }),
                                   );
 
-                                  print(response.statusCode);
-                                  print(response.data);
-
                                   if (response.statusCode == 200) {
                                     await Alert(
                                         context: context,
