@@ -144,11 +144,11 @@ class _LicensePlatePageState extends State<LicensePlatePage> {
                                             RegExp regExpNumbers = RegExp("[0-9]");
                                             RegExp regExpLetters = RegExp("[a-zA-Z]");
                                             if (value == null || value.isEmpty || value
-                                                .length != 8 || regExpLetters
+                                                .length != 7 || regExpLetters
                                                 .allMatches(value)
                                                 .length != 3 || regExpNumbers
                                                 .allMatches(value)
-                                                .length != 5) {
+                                                .length != 4) {
                                               setState(() {
                                                 isEnabled = false;
                                               });
@@ -161,7 +161,7 @@ class _LicensePlatePageState extends State<LicensePlatePage> {
                                           validator: (value) {
                                             RegExp regExpNumbers = RegExp("[0-9]");
                                             RegExp regExpLetters = RegExp("[a-zA-Z]");
-                                            if (value == null || value.isEmpty || value.length != 8 || regExpLetters.allMatches(value).length != 3 || regExpNumbers.allMatches(value).length != 5) {
+                                            if (value == null || value.isEmpty || value.length != 7 || regExpLetters.allMatches(value).length != 3 || regExpNumbers.allMatches(value).length != 4) {
                                               return "Formato incorrecto";
                                             }
                                             return null;
